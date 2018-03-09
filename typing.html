@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typing JS</title>
+    <style>
+        #context{
+            border: 1px solid lightblue;
+            border-radius: 8px;
+            background-color: whitesmoke;
+            width: 750px;
+        }
+        #context, #inputbox, #result, #reloadbtn{
+            padding: 8px;
+            margin: 4px;
+            font-size: 30px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        #activeword{
+            background-color: lightgray;
+            padding: 4px;
+            border-radius: 8px;
+        }
+    
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="context"></div>
+    <textarea name="inputtext" id="inputbox" cols="35" rows="1"></textarea><button id="reloadbtn" onclick="reload()" style="height: 50px;">Reload</button>
+    <div id="result"></div>
+    <button onclick="onTimer()">Clickme</button>
+    <div id="mycounter"></div>
+    <script>
+    i = 60;
+    function onTimer() {
+    document.getElementById('mycounter').innerHTML = i;
+    i--;
+    if (i < 0) {
+        alert('You lose!');
+    }
+    else {
+        setTimeout(onTimer, 1000);
+    }
+    }
+    </script>
+    <script>
+        var rand = Math.floor(Math.random() * 5) + 1;
+        var text = "";
+        switch(rand) {
+        case 1:
+            text = "first text and the man is going to the fact";
+            break;
+        case 2:
+            text = "second text";
+            break;
+        case 3:
+            text = "third text";
+            break;
+        case 4:
+            text = "fourth text";
+            break;
+        case 5:
+            text = "fifth text";
+            break;
+        default:
+            text = "default text";
+        }
+        var word = text.split(" ");
+        var count = 0, wrong = 0;
+        var index = 0;
+        var i;
+        for(i = 0; i < word.length; i++){
+            if(i == 0){
+                document.getElementById('context').innerHTML += '<span id="activeword">' + word[i] + '</span>' + " ";
+            }
+            else{
+                document.getElementById('context').innerHTML += word[i] + " ";
+            }
+        }
+        $("#inputbox").keypress(function(e){
+        if(e.keyCode == '32' && index < word.length)
+        {
+            e.preventDefault();
+            if($(this).val() == word[index++])
+            {
+                count++;
+            }
+            else
+            {
+                wrong++;
+            }
+            $(this).val("");
+            document.getElementById('context').innerHTML = "";
+            for(i = 0; i < word.length; i++){
+                if(i == index){
+                    document.getElementById('context').innerHTML += '<span id="activeword">' + word[i] + '</span>' + " ";
+                }
+                else{
+                    document.getElementById('context').innerHTML += word[i] + " ";
+                }
+            }
+            document.getElementById('result').innerHTML = "Correct: " + count + " and  Wrong: " + wrong;
+        }
+        else if(e.keyCode == '32'){
+            e.preventDefault();
+            $(this).val("");
+        }
+        });
+    function reload() {
+        location.reload();
+    }
+    </script>
+</body>
+</html>

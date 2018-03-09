@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Typing Practice</title>
+    <script src="jquery.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        #context, #inputbox, #submitbtn{
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 30px;
+        }
+        #context{
+            border: 1px solid lightblue;
+            border-radius: 8px;
+            background-color: whitesmoke;
+            width: 866px;
+            padding: 8px;
+            margin: 8px;
+        }
+        #inputbox{
+            border: 1px solid rgb(20, 105, 161);
+            border-radius: 8px;
+            background-color: whitesmoke;
+            width: 750px;
+            height: 40px;
+            padding: 8px;
+            resize: none;
+            margin: 8px;
+        }
+        #submitbtn{
+            background-color: rgb(20, 105, 161);
+            border: 0px;
+            color: white;
+            padding: 8px;
+            width: 100px;
+            height: 59px;
+            border-radius: 8px;
+        }
+        #resultbox{
+            border: 1px solid rgb(20, 105, 161);
+            border-radius: 8px;
+            background-color: whitesmoke;
+            width: 200px;
+            height: 250px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            padding: 8px;
+            margin-left: 8px;
+            margin-right: 670px;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        #speed, .wpm{
+            font-size: 40px;
+        }
+        #speed{
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="context">Content Here</div>
+    <table><tr><td><textarea id="inputbox" cols="30" rows="10"></textarea></td><td><button id="submitbtn"><img src="relaod.png" alt="R"></button></td></tr></table>
+    <div id="resultbox"><span>Your Typing Speed</span><hr/><span id="speed">40</span> <span class="wpm"> WPM<span></div>
+    <script>
+    </script>
+</body>
+</html>
